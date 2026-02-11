@@ -8,7 +8,7 @@ set(QT_QML_OUTPUT_DIRECTORY  ${CMAKE_BINARY_DIR})
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
-qt_add_library(ScopeRadarQmlPlugin STATIC)
+qt_add_library(ScopeRadarQmlPlugin SHARED)
 set_source_files_properties(Theme.qml PROPERTIES
     QT_QML_SINGLETON_TYPE TRUE)
 
