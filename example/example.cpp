@@ -4,7 +4,7 @@
 #include <radarcontroller.h>
 #include <QtQml/qqmlextensionplugin.h>
 
-Q_IMPORT_QML_PLUGIN(ScopeRadarQmlPluginPlugin)
+//Q_IMPORT_QML_PLUGIN(ScopeRadarQmlPluginPlugin)
 
 int main(int argc, char *argv[])
 {
