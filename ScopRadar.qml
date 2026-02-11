@@ -1,4 +1,6 @@
 import QtQuick
+import ScopeRadarQmlPlugin
+
 Item {
 
     id:root
@@ -6,12 +8,15 @@ Item {
     height: 400 //radar.implicitWidth
     visible: true
     //title: qsTr("Hello World")
-    property var radarModel: RadarTargetModel
+    RadarTargetModel {
+        id: radarModel
+    }
+
     SkyView{
         id:radar
     anchors.centerIn: parent
     width: parent.width
     height: parent.height
-    radarModel: root.radarModel
+    radarModel: radarModel
     }
 }

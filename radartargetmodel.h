@@ -11,7 +11,6 @@ class RadarTargetModel : public QAbstractListModel
 {
     Q_OBJECT
     QML_ELEMENT
-    QML_SINGLETON
 public:
     enum Roles {
         AzimuthRole = Qt::UserRole + 1,

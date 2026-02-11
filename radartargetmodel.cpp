@@ -1,14 +1,11 @@
 #include "radartargetmodel.h"
 
+#include "radarcontroller.h"
+
 
 RadarTargetModel::RadarTargetModel(QObject *parent)
     : QAbstractListModel(parent) {
-    QList<RadarTarget> targets;
-    targets.append({ 45, 30, 0.8 });
-    targets.append({ 120, 70, 0.5 });
-    targets.append({ 300, 20, 1.0 });
-
-    updateTargets(targets);
+       RadarController::instance()->registerModel(this);
 }
 
 int RadarTargetModel::rowCount(const QModelIndex &) const {
