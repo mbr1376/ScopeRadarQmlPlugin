@@ -19,9 +19,7 @@ Rectangle {
     }
 
         required property var radarModel
-    //required property color inViewColor
-    //required property color inUseColor
-
+        property real currentRadarHeading: 0.0
 
     readonly property real fullRadius: width < height ? width / 2 - sampleText.width * 1.1
                                                       : height / 2 - sampleText.height * 1.1
@@ -240,7 +238,7 @@ Rectangle {
             anchors.fill: parent
             antialiasing: true
 
-            property real angle: 0
+            property real angle: currentRadarHeading
             property real radius: root.fullRadius
 
             onAngleChanged: requestPaint()
@@ -278,13 +276,13 @@ Rectangle {
                 ctx.stroke()
             }
 
-            NumberAnimation on angle {
-                from: 0
-                to: 360
-                duration: 2500
-                loops: Animation.Infinite
-                easing.type: Easing.Linear
-            }
+            // NumberAnimation on angle {
+            //     from: 0
+            //     to: 360
+            //     duration: 2500
+            //     loops: Animation.Infinite
+            //     easing.type: Easing.Linear
+            // }
         }
     Repeater {
         model: radarModel

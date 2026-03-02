@@ -21,6 +21,7 @@ qt_add_qml_module(ScopeRadarQmlPlugin
     ScopRadar.qml
 SOURCES radartargetmodel.cpp radartargetmodel.h
 SOURCES radarcontroller.h radarcontroller.cpp
+SOURCES radarproperty.h radarproperty.cpp
 
 )
 

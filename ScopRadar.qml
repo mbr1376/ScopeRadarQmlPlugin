@@ -11,6 +11,10 @@ Item {
     RadarTargetModel {
         id: radarModel
     }
+    RadarProperty{
+        id:pro
+    }
+
 
     SkyView{
         id:radar
@@ -18,5 +22,6 @@ Item {
     width: parent.width
     height: parent.height
     radarModel: radarModel
+    currentRadarHeading : pro.headigRadar
     }
 }
