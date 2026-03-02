@@ -7,6 +7,8 @@ struct RadarTarget {
     float elevation;  // 0..90
     float range; 	  // 0 .. 100
     float strength;   // 0..1
+    float rcs;
+    float velocity;
 };
 class RadarTargetModel : public QAbstractListModel
 {
@@ -17,7 +19,9 @@ public:
         AzimuthRole = Qt::UserRole + 1,
         ElevationRole,
         RangeRole,
-        StrengthRole
+        StrengthRole,
+        RCSRole, //سطح مقطع راداری
+        VelocityRole // سرعت شعاعی (متر بر ثانیه)
     };
 
     explicit RadarTargetModel(QObject *parent = nullptr);

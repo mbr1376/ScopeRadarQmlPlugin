@@ -22,3 +22,13 @@ void RadarProperty::setHeadingRadar(const qreal &heading)
 
     emit headingRadarChanged();
 }
+
+void RadarProperty::setPrf(const qreal &prf)
+{
+
+}
+
+void RadarProperty::setBeamWidth(const qreal &bw)
+{
+
+}

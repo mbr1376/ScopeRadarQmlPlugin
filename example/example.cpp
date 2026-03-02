@@ -32,14 +32,15 @@ int main(int argc, char *argv[])
         return -1;
 
 
-    // QObject *rootObject = engine.rootObjects().isEmpty() ? nullptr : engine.rootObjects().first();
-    // if (rootObject) {
-    //     // تزریق نمونه Singleton به Context ریشه با نام "radarController"
-    //     engine.rootContext()->setContextProperty("radarController", RadarController::instance());
-    // }
     QList<RadarTarget> list;
-    list.append({45, 30,30, 0.8});
-    list.append({120, 70,80, 0.5});
+    // هدف ۱: نزدیک، قوی، در حال نزدیک شدن (Velocity منفی)
+    list.append({45.0, 30.0, 30.0, 0.8, 5.0, -15.0});
+
+    // هدف ۲: دور، متوسط، در حال دور شدن (Velocity مثبت)
+    list.append({125.0, 70.0, 80.0, 0.5, 1.2, 55.0});
+
+    // هدف ۳: دور، ضعیف، ثابت (Velocity صفر)
+    list.append({270.0, 5.0, 90.0, 0.15, 0.5, 0.0});
 
     RadarController::instance()->updateTargets(list);
     QTimer *sweepTimer = new QTimer(&app);

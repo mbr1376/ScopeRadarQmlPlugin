@@ -20,6 +20,7 @@ Rectangle {
 
         required property var radarModel
         property real currentRadarHeading: 0.0
+        property real  noiseFloor :0.0
 
     readonly property real fullRadius: width < height ? width / 2 - sampleText.width * 1.1
                                                       : height / 2 - sampleText.height * 1.1
@@ -327,10 +328,22 @@ Rectangle {
             property bool sweepOnPoint: Math.abs((radarCanvas.angle % 360) - azimuth) < 1.5
 
             // رنگ و اندازه وقتی sweep روی نقطه است
-            color: sweepOnPoint ? Qt.rgba(0, 1, 0, 1.0) : Qt.rgba(0, 1, 0, strength)
-            width: sweepOnPoint ? 14 : 8
+            //color: sweepOnPoint ? Qt.rgba(0, 1, 0, 1.0) : Qt.rgba(0, 1, 0, strength)
+            color: {
+                            if (velocity > 10) { // مثلاً: سرعت > 10 متر بر ثانیه به سمت دور شدن
+                                "green"
+                            } else if (velocity < -10) { // مثلاً: سرعت < -10 متر بر ثانیه به سمت نزدیک شدن
+                                "red"
+                            } else { // سرعت نزدیک صفر یا مقدار متوسط
+                                "yellow"
+                            }
+                        }
+            //width: sweepOnPoint ? 14 : 8
+            //height: width
+            width: sweepOnPoint ? Math.max(3, Math.log(rcs) * 1.5 + strength * 0.5) * 3.5  : Math.max(3, Math.log(rcs) * 1.5 + strength * 0.5)
             height: width
             radius: width / 2
+            opacity: strength > noiseFloor ? 1.0 : 0.5
             property bool hover: false
 
                    MouseArea {

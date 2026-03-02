@@ -23,5 +23,6 @@ Item {
     height: parent.height
     radarModel: radarModel
     currentRadarHeading : pro.headigRadar
+    noiseFloor: pro.noiseFloor
     }
 }

@@ -23,6 +23,8 @@ QVariant RadarTargetModel::data(const QModelIndex &index, int role) const {
     case ElevationRole	: return t.elevation;
     case RangeRole     	: return t.range;
     case StrengthRole	: return t.strength;
+    case RCSRole		: return t.rcs;
+    case VelocityRole	: return t.velocity;
     default: return {};
     }
 }
@@ -32,7 +34,9 @@ QHash<int, QByteArray> RadarTargetModel::roleNames() const {
         { AzimuthRole	, "azimuth" },
         { ElevationRole	, "elevation" },
         { RangeRole		, "range" },
-        { StrengthRole	, "strength" }
+        { StrengthRole	, "strength" },
+        { RCSRole		, "rcs" },
+        { VelocityRole	, "velocity" },
     };
 }
 
