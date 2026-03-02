@@ -19,18 +19,20 @@ QVariant RadarTargetModel::data(const QModelIndex &index, int role) const {
     const auto &t = m_targets[index.row()];
 
     switch (role) {
-    case AzimuthRole:   return t.azimuth;
-    case ElevationRole: return t.elevation;
-    case StrengthRole:  return t.strength;
+    case AzimuthRole	: return t.azimuth;
+    case ElevationRole	: return t.elevation;
+    case RangeRole     	: return t.range;
+    case StrengthRole	: return t.strength;
     default: return {};
     }
 }
 
 QHash<int, QByteArray> RadarTargetModel::roleNames() const {
     return {
-        { AzimuthRole, "azimuth" },
-        { ElevationRole, "elevation" },
-        { StrengthRole, "strength" }
+        { AzimuthRole	, "azimuth" },
+        { ElevationRole	, "elevation" },
+        { RangeRole		, "range" },
+        { StrengthRole	, "strength" }
     };
 }
 

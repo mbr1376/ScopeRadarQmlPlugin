@@ -5,6 +5,7 @@
 struct RadarTarget {
     float azimuth;    // 0..360
     float elevation;  // 0..90
+    float range; 	  // 0 .. 100
     float strength;   // 0..1
 };
 class RadarTargetModel : public QAbstractListModel
@@ -15,6 +16,7 @@ public:
     enum Roles {
         AzimuthRole = Qt::UserRole + 1,
         ElevationRole,
+        RangeRole,
         StrengthRole
     };
 

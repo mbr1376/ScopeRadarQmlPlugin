@@ -28,6 +28,7 @@ Rectangle {
 
     readonly property real maxUsedRadius: 0.9 * fullRadius
     readonly property real radiusStep: maxUsedRadius / 9
+    readonly property real maxRadarRange: 100.0
     readonly property int centerX: width / 2
     readonly property int centerY: height / 2
 
@@ -292,8 +293,8 @@ Rectangle {
             id: targetRect
 
             property real rad: (azimuth - 90) * Math.PI / 180
-            property real dist: root.maxUsedRadius * (90 - elevation) / 90
-
+            //property real dist: root.maxUsedRadius * (90 - elevation) / 90
+            property real dist: root.maxUsedRadius * (range / root.maxRadarRange)
             x: root.centerX + dist * Math.cos(rad) - width / 2
             y: root.centerY + dist * Math.sin(rad) - height / 2
 
@@ -330,7 +331,7 @@ Rectangle {
                            id: infoText
                            anchors.centerIn: parent
                             font.weight: Theme.fontLightWeight
-                            text: "Az: " + azimuth.toFixed(0) + "°\nEl: " + elevation.toFixed(0) + "°"
+                            text: "Az: " + azimuth.toFixed(0) + "°\nEl: " + elevation.toFixed(0) + "°\nRange: " + range.toFixed(1)
                            font.pixelSize: 12
                            color: Theme.textMainColor
                        }

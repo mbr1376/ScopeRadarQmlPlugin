@@ -29,8 +29,8 @@ int main(int argc, char *argv[])
         return -1;
 
     QList<RadarTarget> list;
-    list.append({45, 30, 0.8});
-    list.append({120, 70, 0.5});
+    list.append({45, 30,30, 0.8});
+    list.append({120, 70,80, 0.5});
 
     RadarController::instance()->updateTargets(list);
     return app.exec();
