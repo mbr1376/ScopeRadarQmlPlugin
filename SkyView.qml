@@ -25,8 +25,10 @@ Rectangle {
                                                       : height / 2 - sampleText.height * 1.1
 
     readonly property real maxUsedRadius: 0.9 * fullRadius
-    readonly property real radiusStep: maxUsedRadius / 9
     readonly property real maxRadarRange: 100.0
+    readonly property real rangeStep: maxRadarRange / 10.0
+
+    readonly property int numRangeCircles: Math.floor(maxRadarRange / rangeStep) // 10
     readonly property int centerX: width / 2
     readonly property int centerY: height / 2
 
@@ -67,27 +69,52 @@ Rectangle {
             color: Theme.greenColor
         }
         ElevationCircle {
-            radius: root.radiusStep * 9
+            radius: root.rangeStep * 18
             color: rootShape.dashedColor
             dashed: true
         }
         ElevationCircle {
-            radius: root.radiusStep * 7
+            radius: root.rangeStep * 16
             color: rootShape.dashedColor
             dashed: true
         }
         ElevationCircle {
-            radius: root.radiusStep * 5
+            radius: root.rangeStep * 14
             color: rootShape.dashedColor
             dashed: true
         }
         ElevationCircle {
-            radius: root.radiusStep * 3
+            radius: root.rangeStep * 12
             color: rootShape.dashedColor
             dashed: true
         }
         ElevationCircle {
-            radius: root.radiusStep
+            radius: root.rangeStep* 10
+            color: rootShape.dashedColor
+            dashed: true
+        }
+        ElevationCircle {
+            radius: root.rangeStep * 8
+            color: rootShape.dashedColor
+            dashed: true
+        }
+        ElevationCircle {
+            radius: root.rangeStep * 6
+            color: rootShape.dashedColor
+            dashed: true
+        }
+        ElevationCircle {
+            radius: root.rangeStep * 4
+            color: rootShape.dashedColor
+            dashed: true
+        }
+        ElevationCircle {
+            radius: root.rangeStep * 2
+            color: rootShape.dashedColor
+            dashed: true
+        }
+        ElevationCircle {
+            radius: root.rangeStep
             color: rootShape.mainColor
         }
 
@@ -206,31 +233,31 @@ Rectangle {
         component ElevationCaption: Text {
             property real step
             x: root.centerX - implicitWidth / 2
-            y: root.centerY - (step * root.radiusStep + implicitHeight)
+            y: root.centerY - (step*2 * root.rangeStep+ implicitHeight)
             color: Theme.textMainColor
             font.pixelSize: Theme.smallFontSize
             font.weight: Theme.fontLightWeight
         }
 
         ElevationCaption {
-            text: "80°"
+            text: "10"
             step: 1
         }
         ElevationCaption {
-            text: "60°"
+            text: "30"
             step: 3
         }
         ElevationCaption {
-            text: "40°"
+            text: "50"
             step: 5
         }
         ElevationCaption {
-            text: "20°"
+            text: "70"
             step: 7
         }
         ElevationCaption {
-            text: "0°"
-            step: 9
+            text: "80"
+            step: 8
         }
     }
     Canvas {
