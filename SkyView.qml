@@ -331,11 +331,11 @@ Rectangle {
             //color: sweepOnPoint ? Qt.rgba(0, 1, 0, 1.0) : Qt.rgba(0, 1, 0, strength)
             color: {
                             if (velocity > 10) { // مثلاً: سرعت > 10 متر بر ثانیه به سمت دور شدن
-                                "green"
+                                Theme.greenColor
                             } else if (velocity < -10) { // مثلاً: سرعت < -10 متر بر ثانیه به سمت نزدیک شدن
-                                "red"
+                                Theme.redColor
                             } else { // سرعت نزدیک صفر یا مقدار متوسط
-                                "yellow"
+                                Theme.yellowColor
                             }
                         }
             //width: sweepOnPoint ? 14 : 8

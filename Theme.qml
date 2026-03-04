@@ -11,6 +11,7 @@ QtObject {
 
     // colors
     readonly property color greenColor: "#2cde85"
+    readonly property color yellowColor: "#cc9000"
     readonly property color redColor: "#c50000"
     readonly property color whiteColor: "#ffffff"
     readonly property color almostWhiteColor: "#fefefe"
@@ -31,12 +32,8 @@ QtObject {
 
     readonly property color buttonBackgroundColor: root.darkMode ? root.almostWhiteColor
                                                                  : root.greenColor
-    readonly property color buttonTextColor: root.darkGrayColor
-    readonly property color buttonTextPressedColor: root.darkMode ? root.greenColor
-                                                                  : root.whiteColor
-    readonly property color buttonRedTextPressedColor: root.redColor
-
-    readonly property color backgroundColor: root.darkMode ? "#06054b" : root.whiteColor
+    readonly property color switchColor: root.darkMode ? root.lightGrayColor:root.darkGrayColor
+    readonly property color buttonswitchColor: root.darkMode ? root.greenColor:root.almostWhiteColor
     readonly property color darkBackgroundColor: root.darkMode ? "#020233" : "#f8fffc"
 
     readonly property color textGrayColor: root.grayColor

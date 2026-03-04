@@ -19,9 +19,13 @@ qt_add_qml_module(ScopeRadarQmlPlugin
     SkyView.qml
     Theme.qml
     ScopRadar.qml
-SOURCES radartargetmodel.cpp radartargetmodel.h
-SOURCES radarcontroller.h radarcontroller.cpp
-SOURCES radarproperty.h radarproperty.cpp
+    AppRadar.qml
+
+   SOURCES
+        radartargetmodel.cpp radartargetmodel.h
+        radarcontroller.h radarcontroller.cpp
+        radarproperty.h radarproperty.cpp
+    RESOURCES icons/darkMode.png icons/lightMode.png
 
 )
 

@@ -4,11 +4,16 @@ import QtQuick.Controls
 import QtQuick.Controls.Material
 import ScopeRadarQmlPlugin
 Window {
-    width: 640
-    height: 400
+    width: 800
+    height: 480
     visible: true
     title: qsTr("Example Project")
-    ScopRadar{
+    // single  scope  Radar
+    // ScopRadar{
+
+    // }
+    // app Radar
+    AppRadar{
 
     }
 }
