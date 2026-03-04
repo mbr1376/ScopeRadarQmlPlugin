@@ -81,6 +81,8 @@ QtObject {
     readonly property int smallFontSize: 12
     readonly property int fontDefaultWeight: Font.DemiBold
     readonly property int fontLightWeight: Font.Normal
+    readonly property int widthScreen: 800
+    readonly property int heightScreen: 480
 
     // some sizes
     readonly property int defaultSpacing: 5

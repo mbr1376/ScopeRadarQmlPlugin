@@ -26,6 +26,7 @@ qt_add_qml_module(ScopeRadarQmlPlugin
         radarcontroller.h radarcontroller.cpp
         radarproperty.h radarproperty.cpp
     RESOURCES icons/darkMode.png icons/lightMode.png
+    QML_FILES SettingPanel.qml
 
 )
 

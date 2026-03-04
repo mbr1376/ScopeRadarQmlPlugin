@@ -2,8 +2,8 @@ import QtQuick
 import QtQuick.Controls
  import Qt5Compat.GraphicalEffects
 Item {
-    width: 800
-    height : 480
+    width: Theme.widthScreen
+    height : Theme.heightScreen
     Rectangle{
         anchors.fill: parent
         color: Theme.darkBackgroundColor
@@ -58,6 +58,9 @@ Item {
 
     ScopRadar{
         anchors.centerIn: parent
+    }
+    SettingPanel{
+        anchors.right: parent.right
     }
 
 }
