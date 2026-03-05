@@ -15,6 +15,9 @@ class RadarProperty : public QObject
     Q_PROPERTY(qreal noiseFloor READ noiseFloor NOTIFY noiseFloorChanged) // حداقل سیگنال قابل تشخیص
     Q_PROPERTY(qreal antennaSpeedRPM READ antennaSpeedRPM NOTIFY antennaSpeedRPMChanged) // سرعت چرخش آنتن (دور در دقیقه)
     Q_PROPERTY(QString radarMode READ radarMode NOTIFY radarModeChanged) // حالت رادار (Search, Track, ...)
+    Q_PROPERTY(qreal longitude READ longitude NOTIFY longitudeChanged)
+    Q_PROPERTY(qreal latitude READ latitude NOTIFY latitudeChanged)
+    Q_PROPERTY(qreal altitude READ altitude NOTIFY altitudeChanged)
 
 public:
     explicit RadarProperty(QObject *parent = nullptr);
@@ -24,6 +27,9 @@ public:
     qreal pulseWidth() const { return _pulseWidth; }
     qreal noiseFloor() const { return _noiseFloor; }
     qreal antennaSpeedRPM() const { return _antennaSpeedRPM; }
+    qreal longitude() const { return _longitude; }
+    qreal latitude() const { return _latitude; }
+    qreal altitude() const { return _altitude; }
     QString radarMode() const { return _radarMode; }
 public slots:
     void setHeadingRadar(const qreal &heading);
@@ -38,6 +44,9 @@ signals:
     void noiseFloorChanged();
     void antennaSpeedRPMChanged();
     void radarModeChanged();
+    void longitudeChanged();
+    void latitudeChanged();
+    void altitudeChanged();
 
 private:
     qreal _headigRadar;
@@ -47,6 +56,9 @@ private:
     qreal _noiseFloor = 0.5; // مقدار پیش‌فرض SNR (یا شدت سیگنال)
     qreal _antennaSpeedRPM = 12.0; // 12 دور در دقیقه
     QString _radarMode = "Search";
+    qreal _longitude= 54.32;
+    qreal _altitude= 1000;
+    qreal _latitude = 35.65;
 };
 
 #endif // RADARPROPERTY_H

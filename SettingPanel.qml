@@ -1,30 +1,74 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
-Item {
+Drawer {
     width: Theme.widthScreen *0.24
     height: Theme.heightScreen
-    Rectangle{
+    property string longitude
+    property string latitude
+    property string altitude
+    property string prf
+    property string basewidth
+    property string pulsewidth
+    property string noisefloor
+    property string speedrpm
+    background:Rectangle {
         anchors.fill: parent
-        color: "transparent"
-        border.color: Theme.satelliteItemBorderColor
-        border.width: 1
-        ColumnLayout{
+        color: Theme.slideColor
+    }
 
-            anchors.fill: parent
+       ColumnLayout{
+
+            anchors.centerIn: parent
+            FloatingComboBox{
+                label: "RadarMode"
+                _model:["Search","Lock"]
+            }
+
+            TexfildeItem{
+                label: "Longitude"
+                textField: longitude
+            }
+            TexfildeItem{
+                label: "Latitude"
+                textField: latitude
+            }
+            TexfildeItem{
+                label: "Altitude"
+                textField: altitude
+            }
+            TexfildeItem{
+                label: "Repetition Frequency"
+                textField: prf
+            }
+            TexfildeItem{
+                label: "BeamWidth"
+                textField: basewidth
+            }
+            TexfildeItem{
+                label: "PulseWidth"
+                textField: pulsewidth
+            }
+            TexfildeItem{
+                label: "NoiseFloor"
+                textField: noisefloor
+            }
+            TexfildeItem{
+                label: "AntennaSpeedRPM"
+                textField: speedrpm
+            }
+
             Button{
                 text: "Apply"
-                width: 80
-                height: 5
+
                 checkable: true
                 hoverEnabled: true
                 Layout.alignment:  Qt.AlignHCenter
                 background:Rectangle {
                     id:rec
-                    width: 80
-                    height: 50
-                    border.color: Theme.satelliteItemBorderColor
-                    color: Theme.switchColor
+                    width: Theme.widthElemnt
+                    height: Theme.heightElement
+                    color:  Theme.buttonBackgroundColor
                 }
                 contentItem :Text {
                     anchors.centerIn: rec
@@ -33,5 +77,4 @@ Item {
                 }
             }
         }
-    }
 }

@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Controls
- import Qt5Compat.GraphicalEffects
+import Qt5Compat.GraphicalEffects
+import ScopeRadarQmlPlugin
+
 Item {
     width: Theme.widthScreen
     height : Theme.heightScreen
@@ -54,13 +56,48 @@ Item {
                        anchors.verticalCenter: parent.verticalCenter
                    }
     }
+    Image {
+        visible: !settingPanel.visible
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: Theme.defaultSpacing
+        source: "icons/settings.png"
+        ColorOverlay{
+            id:overlayer
+            source: parent
+            anchors.fill: parent
+            color: Theme.greenColor
+        }
+        MouseArea{
+            id:mouseArea
+            hoverEnabled: true
+            anchors.fill: parent
+            onEntered:  {overlayer.color =Theme.greenColorhover;}
+            onExited: {overlayer.color = Theme.greenColor;}
+            onClicked: settingPanel.open()
+        }
 
-
+    }
+    RadarProperty{
+        id:pro
+    }
     ScopRadar{
         anchors.centerIn: parent
     }
+
     SettingPanel{
-        anchors.right: parent.right
+        id:settingPanel
+        edge: Qt.RightEdge
+        prf:pro.pRF
+        basewidth:pro.beamWidth
+        pulsewidth:pro.pulseWidth
+        noisefloor:pro.noiseFloor
+        speedrpm:pro.antennaSpeedRPM
+        longitude:pro.longitude
+        latitude:pro.latitude
+        altitude:pro.altitude
+
+
     }
 
 }

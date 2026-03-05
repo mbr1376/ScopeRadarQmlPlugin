@@ -20,13 +20,17 @@ qt_add_qml_module(ScopeRadarQmlPlugin
     Theme.qml
     ScopRadar.qml
     AppRadar.qml
-
+    SettingPanel.qml
+    TexfildeItem.qml
    SOURCES
         radartargetmodel.cpp radartargetmodel.h
         radarcontroller.h radarcontroller.cpp
         radarproperty.h radarproperty.cpp
-    RESOURCES icons/darkMode.png icons/lightMode.png
-    QML_FILES SettingPanel.qml
+    RESOURCES
+    icons/darkMode.png
+    icons/settings.png
+    icons/lightMode.png
+    QML_FILES FloatingComboBox.qml
 
 )
 
@@ -51,6 +55,7 @@ qt_add_qml_module(ExampleProject
     URI ExampleProjectApp
     VERSION 1.0
     QML_FILES example/example.qml
+
 )
 target_link_libraries(ExampleProject PRIVATE Qt6::Quick ScopeRadarQmlPlugin)
 target_compile_definitions(ExampleProject PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)

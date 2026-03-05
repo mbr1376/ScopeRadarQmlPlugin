@@ -11,6 +11,8 @@ QtObject {
 
     // colors
     readonly property color greenColor: "#2cde85"
+    readonly property color greenColorhover: Qt.rgba(greenColor.r,greenColor.g,greenColor.b,0.5)
+
     readonly property color yellowColor: "#cc9000"
     readonly property color redColor: "#c50000"
     readonly property color whiteColor: "#ffffff"
@@ -30,8 +32,9 @@ QtObject {
                                                           : root.darkGrayColor
     readonly property color iconTextSelected: root.greenColor
 
-    readonly property color buttonBackgroundColor: root.darkMode ? root.almostWhiteColor
-                                                                 : root.greenColor
+    readonly property color buttonBackgroundColor: root.darkMode ?  root.greenColor :root.darkGrayColor
+    readonly property color borderTexfieldColor: root.darkMode ? root.greenColor
+                                                                 : root.darkGrayColor
     readonly property color switchColor: root.darkMode ? root.lightGrayColor:root.darkGrayColor
     readonly property color buttonswitchColor: root.darkMode ? root.greenColor:root.almostWhiteColor
     readonly property color darkBackgroundColor: root.darkMode ? "#020233" : "#f8fffc"
@@ -62,7 +65,7 @@ QtObject {
                                                     root.grayColor.g,
                                                     root.grayColor.b,
                                                     0.3)
-    readonly property color tableSeparatorColor: root.darkMode
+    readonly property color slideColor: root.darkMode
                                                  ? Qt.rgba(root.lightGrayColor.r,
                                                            root.lightGrayColor.g,
                                                            root.lightGrayColor.b,
@@ -82,7 +85,9 @@ QtObject {
     readonly property int fontDefaultWeight: Font.DemiBold
     readonly property int fontLightWeight: Font.Normal
     readonly property int widthScreen: 800
+    readonly property int widthElemnt: 80
     readonly property int heightScreen: 480
+    readonly property int heightElement: 40
 
     // some sizes
     readonly property int defaultSpacing: 5
