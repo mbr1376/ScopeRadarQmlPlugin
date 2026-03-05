@@ -5,7 +5,6 @@ Item {
     id: root
     width: Theme.widthElemnt * 2.1
     height: Theme.heightElement
-    property var _model: []
     property string label: "Label"
     property alias model: combo.model
     property alias currentIndex: combo.currentIndex
@@ -23,6 +22,7 @@ Item {
         padding: 12
         background: null
         model: _model
+        currentIndex: _currentndex
         font.pixelSize: Theme.mediumFontSize
         contentItem: Text {
             text: combo.displayText
@@ -31,6 +31,7 @@ Item {
             elide: Text.ElideRight
         }
     }
+
 
     /* ---------- Border سفارشی ---------- */
     Item {

@@ -8,18 +8,23 @@ class RadarProperty : public QObject
 {
     Q_OBJECT
     QML_ELEMENT
-    Q_PROPERTY(qreal headigRadar READ getHeadingRadar WRITE setHeadingRadar NOTIFY headingRadarChanged FINAL)
-    Q_PROPERTY(qreal pRF READ prf NOTIFY prfChanged) // Pulse Repetition Frequency
-    Q_PROPERTY(qreal beamWidth READ beamWidth NOTIFY beamWidthChanged) // زاویه پرتو (درجه)
-    Q_PROPERTY(qreal pulseWidth READ pulseWidth NOTIFY pulseWidthChanged) // پهنای پالس (میکروثانیه)
-    Q_PROPERTY(qreal noiseFloor READ noiseFloor NOTIFY noiseFloorChanged) // حداقل سیگنال قابل تشخیص
-    Q_PROPERTY(qreal antennaSpeedRPM READ antennaSpeedRPM NOTIFY antennaSpeedRPMChanged) // سرعت چرخش آنتن (دور در دقیقه)
-    Q_PROPERTY(QString radarMode READ radarMode NOTIFY radarModeChanged) // حالت رادار (Search, Track, ...)
-    Q_PROPERTY(qreal longitude READ longitude NOTIFY longitudeChanged)
-    Q_PROPERTY(qreal latitude READ latitude NOTIFY latitudeChanged)
-    Q_PROPERTY(qreal altitude READ altitude NOTIFY altitudeChanged)
+    Q_PROPERTY(qreal headigRadar     READ getHeadingRadar  WRITE setHeadingRadar     NOTIFY headingRadarChanged FINAL)
+    Q_PROPERTY(qreal pRF             READ prf              WRITE setPRF              NOTIFY prfChanged) // Pulse Repetition Frequency
+    Q_PROPERTY(qreal beamWidth       READ beamWidth        WRITE setBeamWidth        NOTIFY beamWidthChanged) // زاویه پرتو (درجه)
+    Q_PROPERTY(qreal pulseWidth      READ pulseWidth       WRITE setPulseWidth       NOTIFY pulseWidthChanged) // پهنای پالس (میکروثانیه)
+    Q_PROPERTY(qreal noiseFloor      READ noiseFloor       WRITE setNoiseFloor       NOTIFY noiseFloorChanged) // حداقل سیگنال قابل تشخیص
+    Q_PROPERTY(qreal antennaSpeedRPM READ antennaSpeedRPM WRITE setAntennaSpeedRPM  NOTIFY antennaSpeedRPMChanged) // سرعت چرخش آنتن (دور در دقیقه)
+    Q_PROPERTY(int   radarMode       READ radarMode        WRITE setRadarMode        NOTIFY radarModeChanged) // حالت رادار (Search, Track, ...)
+    Q_PROPERTY(qreal longitude       READ longitude        WRITE setLongitude        NOTIFY longitudeChanged)
+    Q_PROPERTY(qreal latitude        READ latitude         WRITE setLatitude         NOTIFY latitudeChanged)
+    Q_PROPERTY(qreal altitude        READ altitude         WRITE setAltitude         NOTIFY altitudeChanged)
 
 public:
+    enum RadarMode{
+        Search,
+        Lock
+    };
+    Q_ENUM(RadarMode)
     explicit RadarProperty(QObject *parent = nullptr);
     qreal getHeadingRadar() const;
     qreal prf() const { return _prf; }
@@ -30,11 +35,18 @@ public:
     qreal longitude() const { return _longitude; }
     qreal latitude() const { return _latitude; }
     qreal altitude() const { return _altitude; }
-    QString radarMode() const { return _radarMode; }
+    int radarMode() const { return _radarMode; }
 public slots:
     void setHeadingRadar(const qreal &heading);
-    void setPrf(  const qreal &prf);
+    void setPRF(  const qreal &prf);
     void setBeamWidth(const qreal &bw);
+    void setPulseWidth(const qreal &pw);
+    void setNoiseFloor(const qreal &nf);
+    void setAntennaSpeedRPM(const qreal &asr);
+    void setRadarMode(const int &bw);
+    void setLongitude(const qreal &lon);
+    void setLatitude(const qreal &lat);
+    void setAltitude(const qreal &alt);
 
 signals:
     void headingRadarChanged();
@@ -55,7 +67,7 @@ private:
     qreal _pulseWidth = 1.0; // مقدار پیش‌فرض (1us)
     qreal _noiseFloor = 0.5; // مقدار پیش‌فرض SNR (یا شدت سیگنال)
     qreal _antennaSpeedRPM = 12.0; // 12 دور در دقیقه
-    QString _radarMode = "Search";
+    int _radarMode = static_cast<int>(RadarMode::Lock);
     qreal _longitude= 54.32;
     qreal _altitude= 1000;
     qreal _latitude = 35.65;

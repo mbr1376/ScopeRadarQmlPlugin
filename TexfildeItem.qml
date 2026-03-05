@@ -7,7 +7,6 @@ Item {
     height: Theme.heightElement
 
     property string label: "Label"
-    property string  textField: "Label"
     property alias text: field.text
     property bool error: false
     property int bw: 1

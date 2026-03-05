@@ -96,6 +96,27 @@ Item {
         longitude:pro.longitude
         latitude:pro.latitude
         altitude:pro.altitude
+        currentRadarMode:pro.radarMode
+        onApply:function ( lon,
+                           lat,
+                           alt,
+                           prf,
+                           beamwidth,
+                           pulsewidth,
+                           noise,
+                           speedrpm,
+                          radarmode){
+            pro.setLongitude(parseFloat(lon))
+            pro.setLatitude(parseFloat(lat))
+            pro.setAltitude(parseFloat(alt))
+            pro.setPRF(parseFloat(prf))
+            pro.setBeamWidth(parseFloat(beamwidth))
+            pro.setPulseWidth(parseFloat(pulsewidth))
+            pro.setNoiseFloor(parseFloat(noise))
+            pro.setAntennaSpeedRPM(parseFloat(speedrpm))
+            pro.setRadarMode(parseInt(radarmode))
+            console.info("set Settings")
+        }
 
 
     }
