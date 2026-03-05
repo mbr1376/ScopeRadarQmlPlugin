@@ -4,7 +4,8 @@ This project is a **QML plugin for displaying radar data**, where data is provid
 In this version, the focus is on the **basic architecture**, and **Realtime functionality is not implemented yet**.
 
 ---
-![image](png.png)
+![image](picture/png.png)
+
 
 
 - **RadarTargetModel**: List model for radar targets, instance-based, multiple instances can exist  
@@ -55,6 +56,21 @@ list.append({120, 70, 0.5});
 
 RadarController::instance()->updateTargets(list);
 ```
+
+## APPRadar
+![image](picture/dark.png)
+![image](picture/light.png)
+## Radar Parameters
+
+| Parameter | Type | Description |
+|----------|------|-------------|
+| `PRF` | `qreal` | Pulse Repetition Frequency |
+| `BeamWidth` | `qreal` | Antenna beam width (deg) |
+| `PulseWidth` | `qreal` | Pulse width (µs) |
+| `NoiseFloor` | `qreal` | Minimum detectable signal |
+| `AntennaSpeedRPM` | `qreal` | Antenna rotation speed |
+| `RadarMode` | `QString` | Search / Track |
+
 ## Important Notes
 - Before QML is loaded, no model exists → initial data cannot be sent until models are constructed 
 - Models automatically register themselves with the Controller in their constructor
